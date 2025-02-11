@@ -22,9 +22,31 @@
             text-align: center;
             z-index: 10;
         }
-        .envelope {
+        .envelope-container {
+            position: relative;
             width: 200px;
+            height: 140px;
             cursor: pointer;
+        }
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: gold;
+            border-radius: 10px;
+        }
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: goldenrod;
+            clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+            transition: transform 0.5s ease-in-out;
+        }
+        .opened .flap {
+            transform: rotateX(180deg);
         }
         .message {
             display: none;
@@ -46,27 +68,31 @@
         .heart {
             position: absolute;
             top: -50px;
-            width: 20px;
-            height: 20px;
+            color: red;
+            font-size: 20px;
             animation: falling-hearts linear infinite;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://raw.githubusercontent.com/808Est/valentine-invite/refs/heads/main/DALL·E%202025-02-11%2008.44.37%20-%20A%20realistic%20golden%20envelope%20with%20a%20slightly%20open%20flap%2C%20revealing%20a%20hint%20of%20a%20letter%20inside.%20The%20envelope%20has%20a%20luxurious%2C%20metallic%20gold%20texture%20with%20s.webp" alt="Golden Envelope" class="envelope" onclick="openEnvelope()">
+        <div class="envelope-container" onclick="openEnvelope()">
+            <div class="envelope"></div>
+            <div class="flap"></div>
+        </div>
         <div class="message" id="message">Baby, would you be my Valentine? ❤️</div>
         <a href="#" class="gift-card" id="gift-card" target="_blank">Click here for your gift card 💳</a>
     </div>
     <script>
         function openEnvelope() {
+            document.querySelector('.envelope-container').classList.add('opened');
             document.getElementById('message').style.display = 'block';
             document.getElementById('gift-card').style.display = 'block';
         }
         function createHearts() {
-            let heart = document.createElement('img');
-            heart.src = 'hearts.png'; // Replace with the uploaded GitHub image URL
+            let heart = document.createElement('div');
             heart.classList.add('heart');
+            heart.innerHTML = '❤️';
             heart.style.left = Math.random() * window.innerWidth + 'px';
             heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
             document.body.appendChild(heart);
