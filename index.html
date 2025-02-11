@@ -62,25 +62,28 @@
         }
         .card {
             position: absolute;
-            top: 50%;
+            top: 30%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 200px;
-            height: 150px;
+            transform: translate(-50%, 0%) scale(0);
+            width: 220px;
+            height: 160px;
             background: pink;
             text-align: center;
             padding: 20px;
             border-radius: 10px;
             font-size: 18px;
             font-family: 'Cursive', sans-serif;
+            color: purple;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.8s ease-in-out;
+            opacity: 0;
         }
         .opened .card {
-            transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, 100%) scale(1);
+            opacity: 1;
         }
         .yes-button {
             margin-top: 10px;
@@ -131,7 +134,9 @@
     <script>
         function openEnvelope() {
             document.querySelector('.envelope-container').classList.add('opened');
-            document.getElementById('card').classList.add('opened');
+            setTimeout(() => {
+                document.getElementById('card').classList.add('opened');
+            }, 500); // Delay for better animation timing
         }
         function showGift() {
             document.getElementById('final-message').style.display = 'block';
