@@ -90,6 +90,9 @@
             document.getElementById('gift-card').style.display = 'block';
         }
         function createHearts() {
+            let hearts = document.querySelectorAll('.heart');
+            if (hearts.length > 50) return; // Limit number of hearts on screen
+            
             let heart = document.createElement('div');
             heart.classList.add('heart');
             heart.innerHTML = '❤️';
