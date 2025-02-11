@@ -15,10 +15,12 @@
             height: 100vh;
             overflow: hidden;
             font-family: Arial, sans-serif;
+            position: relative;
         }
         .container {
             position: relative;
             text-align: center;
+            z-index: 10;
         }
         .envelope {
             width: 200px;
@@ -33,26 +35,28 @@
         .gift-card {
             display: none;
             margin-top: 10px;
+            color: yellow;
+            font-size: 18px;
+            text-decoration: none;
         }
         @keyframes falling-petals {
-            0% { transform: translateY(-100px) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
         .petal {
             position: absolute;
             top: -50px;
-            width: 20px;
-            height: 20px;
-            background: pink;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 182, 193, 0.8);
             border-radius: 50%;
-            opacity: 0.7;
             animation: falling-petals 5s linear infinite;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Golden_Envelope.png/600px-Golden_Envelope.png" alt="Golden Envelope" class="envelope" onclick="openEnvelope()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Closed_Envelope_Clipart.svg" alt="Golden Envelope" class="envelope" onclick="openEnvelope()">
         <div class="message" id="message">Baby, would you be my Valentine? ❤️</div>
         <a href="#" class="gift-card" id="gift-card" target="_blank">Click here for your gift card 💳</a>
     </div>
