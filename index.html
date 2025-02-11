@@ -39,18 +39,16 @@
             font-size: 18px;
             text-decoration: none;
         }
-        @keyframes falling-petals {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        @keyframes falling-hearts {
+            0% { transform: translateY(-100px) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) scale(1); opacity: 0; }
         }
-        .petal {
+        .heart {
             position: absolute;
             top: -50px;
-            width: 15px;
-            height: 15px;
-            background: rgba(255, 182, 193, 0.8);
-            border-radius: 50%;
-            animation: falling-petals 5s linear infinite;
+            width: 20px;
+            height: 20px;
+            animation: falling-hearts linear infinite;
         }
     </style>
 </head>
@@ -65,17 +63,16 @@
             document.getElementById('message').style.display = 'block';
             document.getElementById('gift-card').style.display = 'block';
         }
-        function createPetals() {
-            for (let i = 0; i < 30; i++) {
-                let petal = document.createElement('div');
-                petal.classList.add('petal');
-                petal.style.left = Math.random() * window.innerWidth + 'px';
-                petal.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                document.body.appendChild(petal);
-                setTimeout(() => petal.remove(), 5000);
-            }
+        function createHearts() {
+            let heart = document.createElement('img');
+            heart.src = 'hearts.png'; // Replace with the uploaded GitHub image URL
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
         }
-        setInterval(createPetals, 500);
+        setInterval(createHearts, 300);
     </script>
 </body>
 </html>
